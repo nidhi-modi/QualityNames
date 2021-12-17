@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import logo1 from './img/logo1.png';
 import logo2 from './img/logo2.png';
-import './App.css';
-import { render } from 'react-dom';
+import './styles/App.css';
+import Oha from './screens/Oha'
+import Har from './screens/Har'
+import Ger from './screens/Ger'
+import Rep from './screens/Rep'
+
+
+
 
 
 export default class App extends Component {
@@ -32,6 +38,7 @@ export default class App extends Component {
 
     event.preventDefault();
     console.log(this.state.site);
+    this.handleSite();
 
   }
 
@@ -44,12 +51,43 @@ export default class App extends Component {
     console.log(this.state.job);
   }
 
+  handleSite(){
+
+    if(this.state.site === "OHA"){
+
+      return<Oha />
+
+    }else if(this.state.site === "HAR"){
+
+      return<Har />
+
+    }else if(this.state.site === "GER"){
+
+      return<Ger />
+
+    }else if(this.state.site === "REP"){
+
+      return<Rep />
+
+    }else{
+
+
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+
+        &nbsp;
+        <header>
 
           <img src={logo1} className="App-logo" alt="logo" />
+
+        </header>
+
+        <header>
+
           <img src={logo2} className="App-logo" alt="logo" />
 
         </header>
@@ -60,7 +98,9 @@ export default class App extends Component {
 
         &nbsp;
 
+
         <form onSubmit={this.handleSubmit}>
+
 
           <label>
             <input
@@ -104,10 +144,11 @@ export default class App extends Component {
             />REP
           </label>
 
-          <span className="space-between-radio" ></span>
+
 
         </form>
 
+        {this.handleSite()}
 
 
       </div>
