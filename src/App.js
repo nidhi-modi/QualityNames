@@ -6,7 +6,9 @@ import Oha from './screens/Oha'
 import Har from './screens/Har'
 import Ger from './screens/Ger'
 import Rep from './screens/Rep'
-
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 
 
@@ -51,25 +53,25 @@ export default class App extends Component {
     console.log(this.state.job);
   }
 
-  handleSite(){
+  handleSite() {
 
-    if(this.state.site === "OHA"){
+    if (this.state.site === "OHA") {
 
-      return<Oha />
+      return <Oha />
 
-    }else if(this.state.site === "HAR"){
+    } else if (this.state.site === "HAR") {
 
-      return<Har />
+      return <Har />
 
-    }else if(this.state.site === "GER"){
+    } else if (this.state.site === "GER") {
 
-      return<Ger />
+      return <Ger />
 
-    }else if(this.state.site === "REP"){
+    } else if (this.state.site === "REP") {
 
-      return<Rep />
+      return <Rep />
 
-    }else{
+    } else {
 
 
     }
@@ -79,6 +81,7 @@ export default class App extends Component {
     return (
       <div className="App">
 
+        <ToastContainer autoClose={2000}/>
         &nbsp;
         <header>
 
