@@ -173,6 +173,10 @@ class Ger extends React.Component {
 
   }
 
+
+
+  
+
   handleDeleteClick(deleteNames, names) {
 
 
@@ -278,9 +282,6 @@ class Ger extends React.Component {
         return true;
     
       }
-
-     
-    
 
       //END
 
