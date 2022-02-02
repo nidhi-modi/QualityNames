@@ -37,6 +37,7 @@ class Rep extends React.Component {
       adiNumber: '',
       combinedData: [],
       otherTLName: '',
+      TLName: '',
       TL1: [],
       assignJobs: '',
       jobList: [],
@@ -431,7 +432,11 @@ class Rep extends React.Component {
           </select>
 
           <br />
-          <br />
+         
+
+          <h3 className="text_header_style2">{this.state.otherTLName}</h3>
+
+
 
           {this.state.TL1.length > 0 ?
 

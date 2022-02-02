@@ -86,6 +86,13 @@
   
 }
 
+.text_header_style2 {
+  text-align: center;
+  text-transform: capitalize;
+  text-decoration: underline;
+  color: #ff0000;
+}
+
 .App-link {
   color: #61dafb;
 }
