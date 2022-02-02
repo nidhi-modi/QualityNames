@@ -1,47 +1,162 @@
 .Oha {
+  left: 50%;
   text-align: center;
   font-family: sans-serif;
 }
 
-.App-logo {
-  height: 15vmin;
-  pointer-events: none;
+.OhaLoader {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 48%;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: normal infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #ffffff;
-  min-height: 40vh;
+.align-center {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  text-align: center;
+  
+}
+
+.align-space {
+  padding-right: 1.5em;
+  
+}
+
+.align-space-top {
+  padding-right: 1.5em;
+  
+}
+
+.largerCheckbox {
+  width: 18px;
+  height: 18px;
+  
+}
+
+.align-space-header {
+  padding-right: 2em;
+  
+}
+
+.text-input {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+.button-submit {
+  width: 25%;
+  background-color: #4CAF50;
   color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button-dropdown {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.button-submit:hover {
+  background-color: #45a049;
+}
+
+.text_header_style {
+  text-align: center;
+  text-transform: uppercase;
+  
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+
+.space-between-radio {
+  margin-left: 3rem; /* 4px */
+}
+
+.no-bullets {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.spinner {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.spinner span {
+  font-size: 2rem;
+  animation: fade 1s linear 0s infinite;
+  padding-right: 1rem;
+}
+
+.half-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #03fc4e;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.5s linear 0s infinite;
+}
+
+.completed {
+  font-size: 2rem;
+  color: #03fc4e;
+
+  animation: bigger 1s linear;
+}
+
+@keyframes bigger {
   from {
-    transform: rotate(0deg);
+    transform: scale(0);
+  }
+  to {
+    transform: scale(2);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
   }
   to {
     transform: rotate(360deg);
   }
 }
 
-.space-between-radio {
-  margin-left: 3rem; /* 4px */
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.space-between-element {
-  margin-top: 15rem; /* 4px */
-}
+
