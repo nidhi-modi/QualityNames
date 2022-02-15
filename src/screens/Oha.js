@@ -63,7 +63,7 @@ class Oha extends React.Component {
     this.setState({ loading: true })
 
     const scriptUrl1 = 'https://script.google.com/macros/s/AKfycbymOKlhOo1RztVgk_J35pzX3WOMID2Zw0UuPe6pYGxB9OvjCiXf/exec';
-    const url1 = `${scriptUrl1}?callback=ctrlq&action=${'doGetData'}`;
+    const url1 = `${scriptUrl1}?callback=ctrlq&action=${'doGetOhaData'}`;
 
     console.log("URL : " + url1);
     fetch(url1).then((response) => response.json())
@@ -91,6 +91,8 @@ class Oha extends React.Component {
       }).catch((error) => {
 
         console.log(error);
+        this.setState({ loading: false })
+
       });
 
   }
@@ -100,7 +102,7 @@ class Oha extends React.Component {
     console.log("Checklist data from Google in progress..");
 
     const scriptUrl1 = 'https://script.google.com/macros/s/AKfycbymOKlhOo1RztVgk_J35pzX3WOMID2Zw0UuPe6pYGxB9OvjCiXf/exec';
-    const url1 = `${scriptUrl1}?callback=ctrlq&action=${'doGetChecklistData'}`;
+    const url1 = `${scriptUrl1}?callback=ctrlq&action=${'doGetChecklistOhaData'}`;
 
     console.log("URL : " + url1);
     fetch(url1).then((response) => response.json())
@@ -121,6 +123,8 @@ class Oha extends React.Component {
       }).catch((error) => {
 
         console.log(error);
+        this.setState({ loading: false })
+
 
       });
 
@@ -190,7 +194,7 @@ class Oha extends React.Component {
 
             const scriptUrl = 'https://script.google.com/macros/s/AKfycbymOKlhOo1RztVgk_J35pzX3WOMID2Zw0UuPe6pYGxB9OvjCiXf/exec';
             const url = `${scriptUrl}?
-          callback=ctrlq&action=${'doDeleteNames'}&delete_names=${deleteNames}`;
+          callback=ctrlq&action=${'doDeleteOhaNames'}&delete_names=${deleteNames}`;
 
             console.log("URL : " + url);
             fetch(url, { mode: 'no-cors' }).then(
@@ -232,7 +236,7 @@ class Oha extends React.Component {
 
     const scriptUrl = 'https://script.google.com/macros/s/AKfycbymOKlhOo1RztVgk_J35pzX3WOMID2Zw0UuPe6pYGxB9OvjCiXf/exec';
     const url = `${scriptUrl}?
-    callback=ctrlq&action=${'doPostAssignJobsData'}&assign_jobs=${jobs}`;
+    callback=ctrlq&action=${'doPostAssignJobsOhaData'}&assign_jobs=${jobs}`;
 
     console.log("URL : " + url);
     fetch(url, { mode: 'no-cors' }).then(
@@ -259,7 +263,7 @@ class Oha extends React.Component {
 
     //console.log("Parse :"+JSON.stringify(response));
 
-    if (response !== null) {
+    if (response !== null || response !== 0) {
 
       console.log("Data Available");
 
@@ -327,7 +331,7 @@ class Oha extends React.Component {
 
     const scriptUrl = 'https://script.google.com/macros/s/AKfycbymOKlhOo1RztVgk_J35pzX3WOMID2Zw0UuPe6pYGxB9OvjCiXf/exec';
     const url = `${scriptUrl}?
-    callback=ctrlq&action=${'doPostData'}&workers_name=${that.state.workerName}&adi_number=${that.state.adiNumber}&teamleader_name=${that.state.teamLeaderName}&combined_name=${that.state.combinedTLWorkers}`;
+    callback=ctrlq&action=${'doPostOhaData'}&workers_name=${that.state.workerName}&adi_number=${that.state.adiNumber}&teamleader_name=${that.state.teamLeaderName}&combined_name=${that.state.combinedTLWorkers}`;
 
     console.log("URL : " + url);
     fetch(url, { mode: 'no-cors' }).then(

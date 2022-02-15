@@ -77,7 +77,9 @@ class Ger extends React.Component {
 
           const filteredData = this.state.combinedData.items.filter(jobAndTeamLeader);
 
-          this.setState({ TL1: filteredData })
+          const sortedData = filteredData.sort((a, b) => a.Name.localeCompare(b.Name))
+
+          this.setState({ TL1: sortedData })
           //END
 
           console.log("Names received!!");
@@ -91,6 +93,8 @@ class Ger extends React.Component {
       }).catch((error) => {
 
         console.log(error);
+        this.setState({ loading: false })
+
       });
 
   }
@@ -121,6 +125,8 @@ class Ger extends React.Component {
       }).catch((error) => {
 
         console.log(error);
+        this.setState({ loading: false })
+
 
       });
 
@@ -128,7 +134,8 @@ class Ger extends React.Component {
 
   handleWorkersNameChange(event) {
 
-    var str = event.target.value.substring(0, 1).toUpperCase() + event.target.value.substring(1).toLowerCase()
+    //var str = event.target.value.substring(0, 1).toUpperCase() + event.target.value.substring(1).toLowerCase()
+    var str = this.titleCase(event.target.value); 
     this.setState({ workerName: str });
 
   }
@@ -259,7 +266,7 @@ class Ger extends React.Component {
 
     //console.log("Parse :"+JSON.stringify(response));
 
-    if (response !== null) {
+    if (response !== null || response !== 0) {
 
       console.log("Data Available");
 
@@ -321,6 +328,11 @@ class Ger extends React.Component {
 
   }
 
+  titleCase(str) {
+
+    return str.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase());
+  }
+
   sendDataToGoogleSheet = () => {
 
     var that = this;
@@ -363,7 +375,7 @@ class Ger extends React.Component {
     else {
 
       return (
-        <div className="Ger">
+        <div className="align-center-main">
 
 
           <br />
@@ -441,6 +453,7 @@ class Ger extends React.Component {
                     <Table.Row>
 
                       <Table.HeaderCell className="align-space">NAME</Table.HeaderCell>
+                      <Table.HeaderCell className="align-space">ADI</Table.HeaderCell>
                       <Table.HeaderCell className="align-space">CLIPPING</Table.HeaderCell>
                       <Table.HeaderCell className="align-space">TWISTING</Table.HeaderCell>
                       <Table.HeaderCell className="align-space">PRUNING</Table.HeaderCell>
@@ -462,6 +475,7 @@ class Ger extends React.Component {
                       return (
                         <Table.Row key={el.Name}>
                           <Table.Cell className="align-space">{el.Name}</Table.Cell>
+                          <Table.Cell className="align-space">{el.Adi}</Table.Cell>
                           <Table.Cell className="align-space"> <input className="largerCheckbox" type="checkbox" id="Clipping" name={el.Name + " " + clipping + " " + this.state.otherTLName} defaultChecked={this.userExists(el.Name + " " + clipping + " " + this.state.otherTLName)} onChange={this.getJobDetails} value={el.Name + " " + clipping + " " + this.state.otherTLName} /></Table.Cell>
                           <Table.Cell className="align-space"> <input className="largerCheckbox" type="checkbox" id="Twisting" name={el.Name + " " + twisting + " " + this.state.otherTLName} defaultChecked={this.userExists(el.Name + " " + twisting + " " + this.state.otherTLName)} onChange={this.getJobDetails} value={el.Name + " " + twisting + " " + this.state.otherTLName} /></Table.Cell>
                           <Table.Cell className="align-space"> <input className="largerCheckbox" type="checkbox" id="Pruning" name={el.Name + " " + pruning + " " + this.state.otherTLName} defaultChecked={this.userExists(el.Name + " " + pruning + " " + this.state.otherTLName)} onChange={this.getJobDetails} value={el.Name + " " + pruning + " " + this.state.otherTLName} /></Table.Cell>
