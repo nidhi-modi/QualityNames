@@ -135,7 +135,7 @@ class Ger extends React.Component {
   handleWorkersNameChange(event) {
 
     //var str = event.target.value.substring(0, 1).toUpperCase() + event.target.value.substring(1).toLowerCase()
-    var str = this.titleCase(event.target.value); 
+    var str = this.titleCase(event.target.value);
     this.setState({ workerName: str });
 
   }
@@ -153,7 +153,7 @@ class Ger extends React.Component {
 
   afterSetStateFinished(data) {
 
-    this.setState({loading: false})
+    this.setState({ loading: false })
 
     response = data;
 
@@ -182,7 +182,7 @@ class Ger extends React.Component {
 
 
 
-  
+
 
   handleDeleteClick(deleteNames, names) {
 
@@ -260,7 +260,7 @@ class Ger extends React.Component {
 
   }
 
- 
+
 
   userExists(name) {
 
@@ -285,9 +285,9 @@ class Ger extends React.Component {
       const employeesUnderIds = response.items.map(item => item.JobList);
 
       if (employeesUnderIds.includes(name)) {
-       
+
         return true;
-    
+
       }
 
       //END
@@ -310,13 +310,11 @@ class Ger extends React.Component {
 
   handleSubmit(event) {
 
-    if (this.state.teamLeaderName === "") {
+    if (this.state.teamLeaderName === "" || this.state.teamLeaderName === "SELECT" || this.state.teamLeaderName === null) {
 
       toast.error("Please select team leader from the list.")
 
-
       event.preventDefault();
-
 
     } else {
 
@@ -337,25 +335,46 @@ class Ger extends React.Component {
 
     var that = this;
 
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbymOKlhOo1RztVgk_J35pzX3WOMID2Zw0UuPe6pYGxB9OvjCiXf/exec';
-    const url = `${scriptUrl}?
+    const { workerName } = that.state;
+    const { adiNumber } = that.state;
+
+
+    if (workerName) {
+      if (adiNumber) {
+
+
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbymOKlhOo1RztVgk_J35pzX3WOMID2Zw0UuPe6pYGxB9OvjCiXf/exec';
+        const url = `${scriptUrl}?
     callback=ctrlq&action=${'doPostData'}&workers_name=${that.state.workerName}&adi_number=${that.state.adiNumber}&teamleader_name=${that.state.teamLeaderName}&combined_name=${that.state.combinedTLWorkers}`;
 
-    console.log("URL : " + url);
-    fetch(url, { mode: 'no-cors' }).then(
-      () => {
-        toast.success("Data Send")
-        this.setState({
-          workerName: '',
-          adiNumber: '',
-          teamLeaderName: '',
-          combinedTLWorkers: ''
-        })
+        console.log("URL : " + url);
+        fetch(url, { mode: 'no-cors' }).then(
+          () => {
+            toast.success("Data Send")
+            this.setState({
+              workerName: '',
+              adiNumber: '',
+              teamLeaderName: '',
+              combinedTLWorkers: ''
+            })
 
-        document.getElementById("name_select").selectedIndex = 0; //1 = option 2
+            document.getElementById("name_select").selectedIndex = 0; //1 = option 2
 
-      },
-    );
+          },
+        );
+
+
+      } else {
+
+        toast.error("Please select team leader from the list.")
+
+
+      }
+    } else {
+
+      toast.error("Please enter ADI number.")
+
+    }
 
   }
 
@@ -440,7 +459,7 @@ class Ger extends React.Component {
           </select>
 
           <br />
-         
+
 
           <h3 className="text_header_style2">{this.state.otherTLName}</h3>
 

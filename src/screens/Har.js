@@ -307,7 +307,7 @@ class Har extends React.Component {
 
   handleSubmit(event) {
 
-    if (this.state.teamLeaderName === "") {
+    if (this.state.teamLeaderName === "" || this.state.teamLeaderName === "SELECT" || this.state.teamLeaderName === null) {
 
       toast.error("Please select team leader from the list.")
 
@@ -329,25 +329,44 @@ class Har extends React.Component {
 
     var that = this;
 
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbymOKlhOo1RztVgk_J35pzX3WOMID2Zw0UuPe6pYGxB9OvjCiXf/exec';
-    const url = `${scriptUrl}?
+    const { workerName } = that.state;
+    const { adiNumber } = that.state;
+
+
+    if (workerName) {
+      if (adiNumber) {
+
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbymOKlhOo1RztVgk_J35pzX3WOMID2Zw0UuPe6pYGxB9OvjCiXf/exec';
+        const url = `${scriptUrl}?
     callback=ctrlq&action=${'doPostHarData'}&workers_name=${that.state.workerName}&adi_number=${that.state.adiNumber}&teamleader_name=${that.state.teamLeaderName}&combined_name=${that.state.combinedTLWorkers}`;
 
-    console.log("URL : " + url);
-    fetch(url, { mode: 'no-cors' }).then(
-      () => {
-        toast.success("Data Send")
-        this.setState({
-          workerName: '',
-          adiNumber: '',
-          teamLeaderName: '',
-          combinedTLWorkers: ''
-        })
+        console.log("URL : " + url);
+        fetch(url, { mode: 'no-cors' }).then(
+          () => {
+            toast.success("Data Send")
+            this.setState({
+              workerName: '',
+              adiNumber: '',
+              teamLeaderName: '',
+              combinedTLWorkers: ''
+            })
 
-        document.getElementById("name_select").selectedIndex = 0; //1 = option 2
+            document.getElementById("name_select").selectedIndex = 0; //1 = option 2
 
-      },
-    );
+          },
+        );
+
+      } else {
+
+        toast.error("Please select team leader from the list.")
+
+
+      }
+    } else {
+
+      toast.error("Please enter ADI number.")
+
+    }
 
   }
 
@@ -432,9 +451,9 @@ class Har extends React.Component {
           </select>
 
           <br />
-         
 
-         <h3 className="text_header_style2">{this.state.otherTLName}</h3>
+
+          <h3 className="text_header_style2">{this.state.otherTLName}</h3>
 
           {this.state.TL1.length > 0 ?
 
