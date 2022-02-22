@@ -132,7 +132,7 @@ class Rep extends React.Component {
 
   handleWorkersNameChange(event) {
 
-    var str = event.target.value.substring(0, 1).toUpperCase() + event.target.value.substring(1).toLowerCase()
+    var str = this.titleCase(event.target.value);
     this.setState({ workerName: str });
 
   }
@@ -323,6 +323,12 @@ class Rep extends React.Component {
 
     }
 
+  }
+
+
+  titleCase(str) {
+
+    return str.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase());
   }
 
   sendDataToGoogleSheet = () => {
