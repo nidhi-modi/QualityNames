@@ -77,7 +77,9 @@ class Oha extends React.Component {
 
           const filteredData = this.state.combinedData.items.filter(jobAndTeamLeader);
 
-          this.setState({ TL1: filteredData })
+          const sortedData = filteredData.sort((a, b) => a.Name.localeCompare(b.Name))
+
+          this.setState({ TL1: sortedData })
           //END
 
           console.log("Names received!!");

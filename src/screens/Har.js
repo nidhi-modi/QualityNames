@@ -72,13 +72,15 @@ class Har extends React.Component {
         this.setState({ combinedData: responseJson })
         if (responseJson !== null) {
 
-          //TL 1
-          const jobAndTeamLeader = d => d.TeamLeader === this.state.otherTLName;
+           //TL 1
+           const jobAndTeamLeader = d => d.TeamLeader === this.state.otherTLName;
 
-          const filteredData = this.state.combinedData.items.filter(jobAndTeamLeader);
-
-          this.setState({ TL1: filteredData })
-          //END
+           const filteredData = this.state.combinedData.items.filter(jobAndTeamLeader);
+ 
+           const sortedData = filteredData.sort((a, b) => a.Name.localeCompare(b.Name))
+ 
+           this.setState({ TL1: sortedData })
+           //END
 
           console.log("Names received!!");
 
