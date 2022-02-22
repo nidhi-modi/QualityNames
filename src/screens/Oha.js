@@ -263,7 +263,7 @@ class Oha extends React.Component {
 
     //console.log("Parse :"+JSON.stringify(response));
 
-    if (response !== null || response !== 0) {
+    if (response.length) {
 
       console.log("Data Available");
 
