@@ -467,6 +467,7 @@ class Rep extends React.Component {
                     <Table.Row>
 
                       <Table.HeaderCell className="align-space">NAME</Table.HeaderCell>
+                      <Table.HeaderCell className="align-space">ADI</Table.HeaderCell>
                       <Table.HeaderCell className="align-space">CLIPPING</Table.HeaderCell>
                       <Table.HeaderCell className="align-space">TWISTING</Table.HeaderCell>
                       <Table.HeaderCell className="align-space">PRUNING</Table.HeaderCell>
