@@ -260,13 +260,10 @@ class Ger extends React.Component {
 
   }
 
-
-
   userExists(name) {
 
-    //console.log("Parse :"+JSON.stringify(response));
 
-    if (response.length) {
+    if (response.length != 0) {
 
       console.log("Data Available");
 
