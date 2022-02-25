@@ -449,10 +449,11 @@ class Har extends React.Component {
 
           <select className="button-dropdown" name="leaders" onChange={this.getTLName}>
             <option value="none" selected="selected">SELECT</option>
-            <option value="Aroha Majoor">Aroha Majoor</option>
-            <option value="Fusi Pai Tonga">Fusi Pai Tonga</option>
             <option value="Taufa Filiai">Taufa Filiai</option>
-
+            <option value="Gaurav Bhalla">Gaurav Bhalla</option>
+            <option value="Fusi Pai Tonga">Fusi Pai Tonga</option>
+            <option value="Florence Pearson">Florence Pearson</option>
+            <option value="Aroha Majoor">Aroha Majoor</option>
           </select>
 
           <br />
