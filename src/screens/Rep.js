@@ -431,7 +431,7 @@ class Rep extends React.Component {
               <select className="text-input" id="name_select" name="leaders" onChange={this.handleTLChange}>
                 <option value="none" selected="selected">SELECT</option>
                 <option value="Chris Cowie">Chris Cowie</option>
-                <option value="Desiree Lloyd">Desiree Lloyd</option>
+                <option value="Desiree Lloydd">Desiree Lloydd</option>
                 <option value="Judy Karekare">Judy Karekare</option>
                 <option value="Emaleene Toko">Emaleene Toko</option>
               </select>
@@ -452,7 +452,7 @@ class Rep extends React.Component {
           <select className="button-dropdown" name="leaders" onChange={this.getTLName}>
             <option value="none" selected="selected">SELECT</option>
             <option value="Chris Cowie">Chris Cowie</option>
-            <option value="Desiree Lloyd">Desiree Lloyd</option>
+            <option value="Desiree Lloydd">Desiree Lloydd</option>
             <option value="Judy Karekare">Judy Karekare</option>
             <option value="Emaleene Toko">Emaleene Toko</option>
 
